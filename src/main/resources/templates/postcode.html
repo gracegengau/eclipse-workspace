@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Post code Manage</title>
+</head>
+<body>
+
+	<h2>List of Sold House at Postcode 3168</h2>
+
+	<ul>
+	<li th:each="Postcode: ${postcodes}">
+		<p><span th:text="${Postcode.streetAddress}">default</span>
+		, <span th:text="${Postcode.suburb}">default</span>
+		 sold for <span th:text="${Postcode.price}">default</span>
+		 on <span th:text="${Postcode.dateSold}">default</span></p> 
+	</ul>
+
+</body>
+</html>
+
