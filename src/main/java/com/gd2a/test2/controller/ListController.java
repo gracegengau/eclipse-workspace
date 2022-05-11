@@ -51,6 +51,12 @@ public class ListController {
 		return suburbService.ListAllSuburbs();
 	}
 	
+	@RequestMapping(value = "/suburbs/{suburb}")
+	@ResponseBody
+	public Suburb listBySuburbName(@PathVariable String suburb) {
+		return suburbService.listBySuburb(suburb);
+	}
+	
 	@RequestMapping(value = "/listPostcodes")
 	@ResponseBody
 	public List<Postcode> listAllPostcodes() {

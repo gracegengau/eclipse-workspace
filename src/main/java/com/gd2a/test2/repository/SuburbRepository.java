@@ -12,6 +12,8 @@ public interface SuburbRepository extends CrudRepository<Suburb, Integer> {
 
 	List<Suburb> getAllByOrderByPostcode();
 	
+	Suburb findBySuburb(String suburbName);
+	
 	List<Suburb> findByPostcodeid(String postcode, Pageable pageable);
 	
 	default

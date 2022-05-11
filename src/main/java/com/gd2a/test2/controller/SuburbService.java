@@ -1,7 +1,6 @@
 package com.gd2a.test2.controller;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,4 +28,12 @@ public class SuburbService {
 		});
 		return returnSuburbs;
 	}
+	
+	public Suburb listBySuburb(String suburbName) {
+		Suburb suburbFound = suburbRepository.findBySuburb(suburbName);
+		
+		suburbFound.setHouseSold(housePriceRepository.findByPostcodeAndSuburb(suburbFound.getPostcode().getPostcode(), suburbName));
+		return suburbFound;
+	}
+
 }

@@ -1,5 +1,4 @@
 import { React, useEffect, useState } from "react";
-import SuburbPage from "./SuburbPage";
 import PostcodeCard from "../components/PostcodeCard";
 import SearchCard from "../components/SearchCard";
 
@@ -27,7 +26,7 @@ function PostcodePage() {
       <div className="PostscodePage">
         <SearchCard />
         {
-          postcode.slice(0, 15).map((ps, index) => {
+          postcode.map((ps, index) => {
             return <PostcodeCard
               key = {index}
               postcode = {ps.postcode}

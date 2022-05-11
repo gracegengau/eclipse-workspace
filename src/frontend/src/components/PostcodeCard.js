@@ -1,10 +1,10 @@
 import {React, useEffect, useState} from "react";
-import SuburbPage from "../pages/SuburbPage";
+// import SuburbPage from "../pages/SuburbPage";
 
 function PostcodeCard(props) {
   function toSuburbPage() {
-    
-    return <SuburbPage />
+    return null;
+    // return <SuburbPage />
   }
 
   return (
