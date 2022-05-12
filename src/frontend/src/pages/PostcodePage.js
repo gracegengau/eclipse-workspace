@@ -21,9 +21,8 @@ function PostcodePage() {
   if (isLoading) {
     <h1>loading ...</h1>
   } else {
-
     return (
-      <div className="PostscodePage">
+      <div className="Page">
         <SearchCard />
         {
           postcode.map((ps, index) => {
@@ -32,8 +31,7 @@ function PostcodePage() {
               postcode = {ps.postcode}
               listTotal = {ps.listTotal}
               highestPrice = {ps.highestPrice}
-              lowestPrice = {ps.lowestPrice}
-              suburbList = {ps.suburbs} />
+              lowestPrice = {ps.lowestPrice} />
         })
       }
       </div>

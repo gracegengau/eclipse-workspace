@@ -31,8 +31,9 @@ public class SuburbService {
 	
 	public Suburb listBySuburb(String suburbName) {
 		Suburb suburbFound = suburbRepository.findBySuburb(suburbName);
-		
-		suburbFound.setHouseSold(housePriceRepository.findByPostcodeAndSuburb(suburbFound.getPostcode().getPostcode(), suburbName));
+		var postcode = suburbFound.getPostcode().getPostcode();
+		suburbFound.setHouseSold(housePriceRepository.findByPostcodeAndSuburb(postcode, suburbName));
+		System.out.println(suburbFound);
 		return suburbFound;
 	}
 

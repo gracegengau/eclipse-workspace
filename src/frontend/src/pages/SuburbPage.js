@@ -1,40 +1,51 @@
 import { React, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import SuburbCard from "../components/SuburbCard";
+import HouseCard from "../components/HouseCard";
 
-function SuburbPage(props) {
-  const [suburbs, setSuburb] = useState([]);
+function SuburbPage() {
+  //need to specify the structure of suburbDetails, otherwise state updates to null
+  const state = {
+      id: 0,
+      suburb: "",
+      postcode: {},
+      postcodeid: 0,
+      houseSold: []
+  }
+
+  const {suburb} = useParams();
   const [isLoading, setIsLoading] = useState(true);
+  const [suburbDetails, setSuburbDetails] = useState(state);
 
-  useEffect(() => {
-    const fetchData = async() => {
-        const response = await fetch("http://localhost:8080/suburbs/Clayton");
+  useEffect( () => {
+      const fetchData = async() => {
+        const address = 'http://localhost:8080/suburbs/'+suburb;
+        const response = await fetch(address);
         const data = await response.json();
-        setSuburb(data);
-        setIsLoading(false);
-    }
+        setSuburbDetails(data);
+      };
 
-    fetchData();
+      fetchData();
+      setIsLoading(false);
   }, []);
 
   if (isLoading) {
     <h1>loading ...</h1>
   } else {
-    console.log(suburbs);
+    const houseSold = suburbDetails.houseSold;
 
     return (
-      <div className="SuburbPage">
-      {
-        suburbs.map((sb, index) => {
-          return <SuburbCard
-            key = {index} />
-            // streetAddress = {sb.houseSold.streetAddress}
-            // bedrooms =
-            // bathrooms =
-            // price =
-            // dateSold =
-        })
-      }
+      <div className="Page">
+        {
+            houseSold.map((house, index) => {
+            return <HouseCard
+              key = {index}
+              streetAddress = {house.streetAddress}
+              bedrooms = {house.bedrooms}
+              bathrooms = {house.bathrooms}
+              price = {house.price}
+              dateSold = {house.dateSold}/>
+            })
+          }
       </div>
     );
   }

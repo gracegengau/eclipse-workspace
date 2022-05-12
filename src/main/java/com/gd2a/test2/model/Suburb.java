@@ -75,7 +75,7 @@ public class Suburb {
 
 	@Override
 	public String toString() {
-		return "Suburb " + suburb + ", " + postcode;
+		return "Suburb " + suburb + ", " + postcode.getPostcode() + "," + houseSold;
 	}
 
 }
